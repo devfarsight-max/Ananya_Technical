@@ -5,6 +5,7 @@ const services = [
   { label: 'Educational Studies', href: '/services/education' },
   { label: 'Performing Arts', href: '/services/performing-arts' },
   { label: 'Technological Studies', href: '/services/technical' },
+  { label: 'Legal Studies', href: '/services/legal' },
 ];
 const links = [
   { label: 'Home', href: '/' },

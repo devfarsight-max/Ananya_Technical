@@ -12,6 +12,7 @@ const links = [
   '/services/education',
   '/services/performing-arts',
   '/services/technical',
+  '/services/legal',
 ];
 const team = [
   ['Mr. D. Chakravertee', 'Director - Operations'],
@@ -188,7 +189,7 @@ export default function Home() {
               artistic expression, and opens conversations about future skills.
             </p>
           </motion.div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 lg:grid-cols-4">
             {services.map((service, i) => {
               const Icon = service.icon;
               return (
@@ -217,6 +218,7 @@ export default function Home() {
                           'Classes 1–12 · CBSE, ICSE & U.P. Board',
                           'Classical dance · Music · Creative development',
                           'In development · Enquire for future updates',
+                          'Law awareness · Simplified learning',
                         ][i]
                       }
                     </p>
