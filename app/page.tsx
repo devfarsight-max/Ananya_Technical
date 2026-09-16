@@ -1,5 +1,8 @@
-﻿import Image from 'next/image';
+﻿'use client';
+
+import Image from 'next/image';
 import Link from '@/components/site-link';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, BookOpen, Sparkles, GraduationCap } from 'lucide-react';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
@@ -17,12 +20,40 @@ const team = [
 ];
 
 export default function Home() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const reveal = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 28 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+      },
+    },
+  };
+
   return (
     <main className="bg-[#FAF7EF] text-[#681321]">
       <Header />
-      <section className="page-hero">
+      <motion.section
+        className="page-hero"
+        initial="hidden"
+        animate="visible"
+        variants={stagger}
+      >
         <div className="site-container grid items-center gap-12 lg:grid-cols-[1.2fr_.8fr] lg:gap-20">
-          <div>
+          <motion.div variants={reveal}>
             <p className="eyebrow">EDUCATION. EXPRESSION. POSSIBILITY.</p>
             <h1 className="hero-title mt-6">
               Where Education Builds You,
@@ -38,15 +69,25 @@ export default function Home() {
               coaching, skill development, educational guidance, and performing
               arts for students, youth, and aspiring professionals.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/services/education" className="button-primary">
-                Explore learning <ArrowRight size={18} />
-              </Link>
-              <Link href="/contact" className="button-secondary">
-                Talk to our team
-              </Link>
-            </div>
-            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#681321]/15 pt-6 text-sm font-semibold">
+            <motion.div
+              className="mt-8 flex flex-wrap gap-3"
+              variants={reveal}
+            >
+              <motion.div whileHover={shouldReduceMotion ? undefined : { y: -2 }} whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
+                <Link href="/services/education" className="button-primary">
+                  Explore learning <ArrowRight size={18} />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={shouldReduceMotion ? undefined : { y: -2 }} whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
+                <Link href="/contact" className="button-secondary">
+                  Talk to our team
+                </Link>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#681321]/15 pt-6 text-sm font-semibold"
+              variants={reveal}
+            >
               <span className="flex items-center gap-2">
                 <BookOpen size={17} />
                 Quality education
@@ -59,19 +100,25 @@ export default function Home() {
                 <GraduationCap size={17} />
                 Personal growth
               </span>
-            </div>
-          </div>
-          <figure className="mx-auto w-full max-w-md">
+            </motion.div>
+          </motion.div>
+          <motion.figure
+            className="mx-auto w-full max-w-md"
+            variants={reveal}
+            whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+          >
             <div className="overflow-hidden rounded-t-[10rem] rounded-b-xl border border-[#681321]/15 bg-brand-soft p-3">
-              <Image
-                src="/gallery/dance-portrait.jpeg"
-                alt="Dancer expressing a classical pose in a red and gold costume"
-                width={853}
-                height={1280}
-                priority
-                sizes="(min-width: 1024px) 36vw, 90vw"
-                className="max-h-[520px] w-full rounded-t-[9.5rem] rounded-b-lg object-contain"
-              />
+              <motion.div whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }} transition={{ duration: 0.45 }}>
+                <Image
+                  src="/gallery/dance-portrait.jpeg"
+                  alt="Dancer expressing a classical pose in a red and gold costume"
+                  width={853}
+                  height={1280}
+                  priority
+                  sizes="(min-width: 1024px) 36vw, 90vw"
+                  className="max-h-[520px] w-full rounded-t-[9.5rem] rounded-b-lg object-contain"
+                />
+              </motion.div>
             </div>
             <figcaption className="mt-4 flex justify-between gap-4 text-sm">
               <span className="font-semibold">
@@ -84,19 +131,25 @@ export default function Home() {
                 Our gallery <ArrowRight size={16} />
               </Link>
             </figcaption>
-          </figure>
+          </motion.figure>
         </div>
-      </section>
-      <section className="site-container grid gap-10 py-20 lg:grid-cols-2 lg:gap-20">
-        <div>
+      </motion.section>
+      <motion.section
+        className="site-container grid gap-10 py-20 lg:grid-cols-2 lg:gap-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
+        <motion.div variants={reveal}>
           <p className="eyebrow">WELCOME TO ATS</p>
           <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
             Learning with purpose.
             <br />
             Growing with confidence.
           </h2>
-        </div>
-        <div className="space-y-5 text-lg leading-8 text-[#681321]/75">
+        </motion.div>
+        <motion.div className="space-y-5 text-lg leading-8 text-[#681321]/75" variants={reveal}>
           <p>
             Every learner brings a different set of interests, ambitions, and
             abilities. At ATS, we believe education should help individuals
@@ -114,11 +167,18 @@ export default function Home() {
           >
             Discover our story <ArrowRight size={18} />
           </Link>
-        </div>
-      </section>
-      <section id="services" className="bg-brand-soft py-20">
+        </motion.div>
+      </motion.section>
+      <motion.section
+        id="services"
+        className="bg-brand-soft py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={stagger}
+      >
         <div className="site-container">
-          <div className="max-w-2xl">
+          <motion.div className="max-w-2xl" variants={reveal}>
             <p className="eyebrow">FIND YOUR DIRECTION</p>
             <h2 className="mt-4 font-serif text-4xl sm:text-5xl">
               Different interests. Meaningful possibilities.
@@ -127,48 +187,59 @@ export default function Home() {
               Explore learning that strengthens academic understanding, develops
               artistic expression, and opens conversations about future skills.
             </p>
-          </div>
+          </motion.div>
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {services.map((service, i) => {
               const Icon = service.icon;
               return (
-                <Link
+                <motion.div
                   key={service.number}
-                  href={links[i]}
-                  className="detail-card group flex flex-col transition-shadow hover:shadow-lg"
+                  variants={reveal}
+                  whileHover={shouldReduceMotion ? undefined : { y: -6 }}
                 >
-                  <div className="flex items-center justify-between">
-                    <Icon size={30} strokeWidth={1.4} />
-                    <span className="text-sm text-[#681321]/60">
-                      {service.number}
+                  <Link
+                    href={links[i]}
+                    className="detail-card group flex h-full flex-col transition-shadow hover:shadow-lg"
+                  >
+                    <div className="flex items-center justify-between">
+                      <Icon size={30} strokeWidth={1.4} />
+                      <span className="text-sm text-[#681321]/60">
+                        {service.number}
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-2xl font-bold">{service.title}</h3>
+                    <p className="mt-4 flex-1 leading-7 text-[#681321]/75">
+                      {service.description}
+                    </p>
+                    <p className="mt-5 border-t border-[#681321]/15 pt-5 text-sm leading-6">
+                      {
+                        [
+                          'Classes 1–12 · CBSE, ICSE & U.P. Board',
+                          'Classical dance · Music · Creative development',
+                          'In development · Enquire for future updates',
+                        ][i]
+                      }
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 font-bold">
+                      {i === 2 ? 'See what is coming' : 'Explore this area'}
+                      <ArrowRight size={17} />
                     </span>
-                  </div>
-                  <h3 className="mt-8 text-2xl font-bold">{service.title}</h3>
-                  <p className="mt-4 flex-1 leading-7 text-[#681321]/75">
-                    {service.description}
-                  </p>
-                  <p className="mt-5 border-t border-[#681321]/15 pt-5 text-sm leading-6">
-                    {
-                      [
-                        'Classes 1–12 · CBSE, ICSE & U.P. Board',
-                        'Classical dance · Music · Creative development',
-                        'In development · Enquire for future updates',
-                      ][i]
-                    }
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-2 font-bold">
-                    {i === 2 ? 'See what is coming' : 'Explore this area'}
-                    <ArrowRight size={17} />
-                  </span>
-                </Link>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
         </div>
-      </section>
-      <section className="site-container py-20">
+      </motion.section>
+      <motion.section
+        className="site-container py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
         <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
-          <div>
+          <motion.div variants={reveal}>
             <p className="eyebrow">THE WAY WE LEARN</p>
             <h2 className="mt-4 font-serif text-4xl sm:text-5xl">
               Small steps.
@@ -186,7 +257,7 @@ export default function Home() {
             >
               Explore our approach <ArrowRight size={18} />
             </Link>
-          </div>
+          </motion.div>
           <div className="space-y-5">
             {[
               [
@@ -202,7 +273,12 @@ export default function Home() {
                 'Develop habits of curiosity, self-expression, and responsibility that can support academic, personal, and professional aspirations.',
               ],
             ].map(([title, text], i) => (
-              <article key={title} className="detail-card flex gap-5">
+              <motion.article
+                key={title}
+                className="detail-card flex gap-5"
+                variants={reveal}
+                whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+              >
                 <span className="font-serif text-3xl text-[#681321]/45">
                   0{i + 1}
                 </span>
@@ -210,14 +286,20 @@ export default function Home() {
                   <h3 className="text-xl font-bold">{title}</h3>
                   <p className="mt-3 leading-7 text-[#681321]/75">{text}</p>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
-      </section>
-      <section className="bg-maroon py-20 text-[#FAF7EF]">
+      </motion.section>
+      <motion.section
+        className="bg-maroon py-20 text-[#FAF7EF]"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
         <div className="site-container grid gap-12 lg:grid-cols-2">
-          <div>
+          <motion.div variants={reveal}>
             <p className="eyebrow">OUR VISION</p>
             <h2 className="mt-4 font-serif text-4xl">
               Empowering through education & creativity.
@@ -227,8 +309,8 @@ export default function Home() {
               through quality education, creative expression, and skill
               development, fostering academic excellence and artistic growth.
             </p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={reveal}>
             <p className="eyebrow">OUR MISSION</p>
             <h2 className="mt-4 font-serif text-4xl">
               A foundation for a fuller future.
@@ -245,19 +327,27 @@ export default function Home() {
             >
               Read our vision & mission <ArrowRight size={18} />
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </section>
-      <section className="site-container grid items-center gap-10 py-20 lg:grid-cols-2">
-        <Image
-          src="/gallery/photo-018.jpeg"
-          alt="Award presentation with participants on stage"
-          width={1600}
-          height={1064}
-          sizes="(min-width: 1024px) 45vw, 90vw"
-          className="w-full rounded-xl"
-        />
-        <div className="lg:pl-8">
+      </motion.section>
+      <motion.section
+        className="site-container grid items-center gap-10 py-20 lg:grid-cols-2"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
+        <motion.div variants={reveal}>
+          <Image
+            src="/gallery/photo-018.jpeg"
+            alt="Award presentation with participants on stage"
+            width={1600}
+            height={1064}
+            sizes="(min-width: 1024px) 45vw, 90vw"
+            className="w-full rounded-xl"
+          />
+        </motion.div>
+        <motion.div className="lg:pl-8" variants={reveal}>
           <p className="eyebrow">LIFE IN PICTURES</p>
           <h2 className="mt-4 font-serif text-4xl sm:text-5xl">
             Expression, effort, and moments worth sharing.
@@ -270,37 +360,59 @@ export default function Home() {
           <Link href="/gallery" className="button-secondary mt-7">
             Visit our gallery <ArrowRight size={18} />
           </Link>
-        </div>
-      </section>
-      <section className="border-t border-[#681321]/15 py-20">
+        </motion.div>
+      </motion.section>
+      <motion.section
+        className="border-t border-[#681321]/15 py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+      >
         <div className="site-container">
-          <p className="eyebrow">PEOPLE BEHIND THE PURPOSE</p>
-          <h2 className="mt-4 font-serif text-4xl sm:text-5xl">
-            A shared commitment to learning.
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#681321]/75">
-            Our leadership brings operations, educational direction, and a
-            commitment to individual growth together around the ATS vision.
-          </p>
+          <motion.div variants={reveal}>
+            <p className="eyebrow">PEOPLE BEHIND THE PURPOSE</p>
+            <h2 className="mt-4 font-serif text-4xl sm:text-5xl">
+              A shared commitment to learning.
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#681321]/75">
+              Our leadership brings operations, educational direction, and a
+              commitment to individual growth together around the ATS vision.
+            </p>
+          </motion.div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {team.map(([name, role]) => (
-              <article key={name} className="detail-card">
+            {team.map(([name, role], index) => (
+              <motion.article
+                key={name}
+                className="detail-card"
+                variants={reveal}
+                custom={index}
+                whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+              >
                 <h3 className="text-xl font-bold">{name}</h3>
                 <p className="mt-3 text-[#681321]/75">{role}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
-          <Link
-            href="/team"
-            className="mt-7 inline-flex items-center gap-2 font-bold"
-          >
-            Meet our team <ArrowRight size={18} />
-          </Link>
+          <motion.div variants={reveal}>
+            <Link
+              href="/team"
+              className="mt-7 inline-flex items-center gap-2 font-bold"
+            >
+              Meet our team <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
-      </section>
-      <section className="bg-brand-soft py-16">
+      </motion.section>
+      <motion.section
+        className="bg-brand-soft py-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={stagger}
+      >
         <div className="site-container flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
-          <div>
+          <motion.div variants={reveal}>
             <p className="eyebrow">LET&apos;S BEGIN</p>
             <h2 className="mt-3 font-serif text-4xl">
               What would you like to learn next?
@@ -310,12 +422,14 @@ export default function Home() {
               educational guidance. Share your goals and ask about current
               programme availability.
             </p>
-          </div>
-          <Link href="/contact" className="button-primary shrink-0">
-            Start a conversation <ArrowRight size={18} />
-          </Link>
+          </motion.div>
+          <motion.div variants={reveal} whileHover={shouldReduceMotion ? undefined : { y: -2 }} whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
+            <Link href="/contact" className="button-primary shrink-0">
+              Start a conversation <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       <Footer />
     </main>
   );
