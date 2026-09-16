@@ -3,7 +3,7 @@ import { PageShell } from '@/components/page-shell';
 import { galleryPhotos } from '@/src/data/gallery';
 
 export const metadata = {
-  title: 'Gallery | Ananya Technical Services',
+  title: 'Achievements | Ananya Technical Services',
   description:
     'Explore performing arts, practice sessions, and award events at Ananya Technical Services Private Limited.',
 };
@@ -29,16 +29,16 @@ const sections = [
   },
 ];
 
-export default function Gallery() {
+export default function Achievements() {
   return (
     <PageShell
-      eyebrow="OUR GALLERY"
+      eyebrow="OUR ACHIEVEMENTS"
       title="Moments of expression and achievement."
       intro="Explore our performing arts, practice sessions, and celebrations. Select any photo to view it at full size."
     >
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
         <nav
-          aria-label="Gallery categories"
+          aria-label="Achievement categories"
           className="mb-14 flex flex-wrap gap-3 border-b border-[#681321]/15 pb-8"
         >
           {sections.map((section) => (

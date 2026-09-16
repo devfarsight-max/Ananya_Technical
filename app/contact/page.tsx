@@ -1,4 +1,4 @@
-﻿import { ContactForm } from '@/components/contact/contact-form';
+﻿import Image from 'next/image';
 import { PageShell } from '@/components/page-shell';
 import { Phone, Mail, MapPin } from 'lucide-react';
 export default function Contact() {
@@ -71,14 +71,87 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <div className="rounded-xl bg-maroon p-6 text-[#FAF7EF] sm:p-10">
-          <h2 className="font-serif text-3xl">
-            Tell us what you have in mind.
+      </section>
+      <section className="site-container pb-20">
+        <div className="max-w-2xl">
+          <p className="eyebrow">FOLLOW OUR CHANNELS</p>
+          <h2 className="mt-4 font-serif text-4xl">
+            Connect with us on Instagram.
           </h2>
-          <p className="mb-7 mt-3 leading-7 text-[#FAF7EF]/80">
-            Complete the details below to prepare an email to our team.
+          <p className="mt-4 leading-7 text-[#681321]/75">
+            Scan the QR code or open the handle to follow the right page for
+            performing arts and legal learning.
           </p>
-          <ContactForm />
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {[
+            {
+              title: 'Performing Arts Instagram',
+              handle: '@ghungrootales.by_ananya',
+              image: '/gallery/instagram-performing-arts.png',
+              href: 'https://www.instagram.com/ghungrootales.by_ananya/',
+            },
+            {
+              title: 'Legal Instagram',
+              handle: '@nyaya.simplified_byats',
+              image: '/gallery/instagram-legal.png',
+              href: 'https://www.instagram.com/nyaya.simplified_byats/',
+            },
+          ].map((channel) => (
+            <article key={channel.handle} className="detail-card">
+              <h3 className="text-xl font-bold">{channel.title}</h3>
+              <a
+                href={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block font-semibold hover:underline"
+              >
+                {channel.handle}
+              </a>
+              <a
+                href={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={'Open ' + channel.title}
+                className="mt-5 block overflow-hidden rounded-lg bg-brand-soft"
+              >
+                <Image
+                  src={channel.image}
+                  alt={channel.title + ' QR code'}
+                  width={768}
+                  height={1024}
+                  className="mx-auto aspect-[3/4] w-full max-w-sm object-contain"
+                />
+              </a>
+            </article>
+          ))}
+        </div>
+        <div className="mt-12">
+          <h2 className="font-serif text-4xl">Watch our YouTube channels.</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <a
+              href="https://youtube.com/@ghungrootales.by_ananya?si=Qgr-7cMWKZBdImtO"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-card block transition-shadow hover:shadow-lg"
+            >
+              <h3 className="text-xl font-bold">Performing Arts YouTube</h3>
+              <p className="mt-2 leading-7 text-[#681321]/75">
+                Ghungroo Tales by Ananya
+              </p>
+            </a>
+            <a
+              href="https://youtube.com/@nyaya.simplified_byats?si=4-gADF8BkUpm1NOg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-card block transition-shadow hover:shadow-lg"
+            >
+              <h3 className="text-xl font-bold">Legal YouTube</h3>
+              <p className="mt-2 leading-7 text-[#681321]/75">
+                Nyaya Simplified by ATS
+              </p>
+            </a>
+          </div>
         </div>
       </section>
       <section className="site-container pb-20">

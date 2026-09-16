@@ -14,7 +14,7 @@ The ordinary build targets Cloudflare and should not be used as the Vercel build
 3. Use Framework Preset **Other**, Build Command **npm run build:vercel**, and Output Directory **dist/client**. These values are also configured in `vercel.json`.
 4. Keep Root Directory at the repository root (the directory containing `package.json`).
 5. Deploy the new commit. If redeploying manually, confirm the selected deployment uses the new commit rather than an older one.
-6. Visit the production URL and check `/`, `/about`, `/gallery`, `/contact`, and `/services/education` directly.
+6. Visit the production URL and check `/`, `/about`, `/achievements`, `/contact`, and `/services/education` directly.
 
 To verify the export locally, run `npm run build:vercel`. It must generate `dist/client/index.html` and the other route HTML files. The website is static; the enquiry form prepares an email in the visitor's email app rather than submitting to a server.
 

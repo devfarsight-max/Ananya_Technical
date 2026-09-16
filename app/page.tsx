@@ -125,10 +125,10 @@ export default function Home() {
                 Discipline meets self-expression.
               </span>
               <Link
-                href="/gallery"
+                href="/achievements"
                 className="inline-flex items-center gap-2 hover:underline"
               >
-                Our gallery <ArrowRight size={16} />
+                Our achievements <ArrowRight size={16} />
               </Link>
             </figcaption>
           </motion.figure>
@@ -353,12 +353,12 @@ export default function Home() {
             Expression, effort, and moments worth sharing.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#681321]/75">
-            Our gallery brings together performing arts, practice sessions, and
+            Our achievements bring together performing arts, practice sessions, and
             award events. Take a closer look at the people and creative moments
             behind the ATS story.
           </p>
-          <Link href="/gallery" className="button-secondary mt-7">
-            Visit our gallery <ArrowRight size={18} />
+          <Link href="/achievements" className="button-secondary mt-7">
+            View our achievements <ArrowRight size={18} />
           </Link>
         </motion.div>
       </motion.section>
