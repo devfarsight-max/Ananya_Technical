@@ -1,5 +1,5 @@
 ﻿import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/site-link';
 import { ArrowRight, BookOpen, Sparkles, GraduationCap } from 'lucide-react';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';

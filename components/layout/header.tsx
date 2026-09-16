@@ -1,9 +1,6 @@
-'use client';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from '@/components/site-link';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { useState } from 'react';
 const services = [
   { label: 'Educational Studies', href: '/services/education' },
   { label: 'Performing Arts', href: '/services/performing-arts' },
@@ -16,9 +13,6 @@ const links = [
   { label: 'Gallery', href: '/gallery' },
 ];
 export function Header() {
-  const [mobile, setMobile] = useState(false);
-  const path = usePathname();
-  const active = (href: string) => (path === href ? 'page' : undefined);
   return (
     <header className="sticky top-0 z-50 border-b border-white/15 bg-maroon text-[#FAF7EF]">
       <nav
@@ -50,7 +44,6 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={active(link.href)}
               className="py-2 text-sm text-[#FAF7EF]/85 hover:text-[#FAF7EF] aria-[current=page]:underline aria-[current=page]:underline-offset-8"
             >
               {link.label}
@@ -65,7 +58,6 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  aria-current={active(link.href)}
                   className="block rounded px-4 py-3 text-sm hover:bg-brand-soft"
                 >
                   {link.label}
@@ -77,7 +69,6 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={active(link.href)}
               className="py-2 text-sm text-[#FAF7EF]/85 hover:text-[#FAF7EF] aria-[current=page]:underline aria-[current=page]:underline-offset-8"
             >
               {link.label}
@@ -90,40 +81,36 @@ export function Header() {
             Contact us
           </Link>
         </div>
-        <button
-          onClick={() => setMobile(!mobile)}
-          aria-expanded={mobile}
-          aria-controls="mobile-navigation"
-          aria-label={mobile ? 'Close navigation' : 'Open navigation'}
-          className="rounded border border-white/30 p-2 lg:hidden"
-        >
-          {mobile ? <X /> : <Menu />}
-        </button>
+        <details className="group lg:hidden">
+          <summary
+            aria-label="Toggle mobile navigation"
+            className="flex cursor-pointer list-none items-center gap-2 rounded border border-white/30 p-2 [&::-webkit-details-marker]:hidden"
+          >
+            <Menu className="group-open:hidden" aria-hidden="true" />
+            <X className="hidden group-open:block" aria-hidden="true" />
+            <span className="text-sm font-semibold">Menu</span>
+          </summary>
+          <nav
+            aria-label="Mobile navigation"
+            className="absolute inset-x-0 top-full max-h-[calc(100dvh-6rem)] overflow-y-auto border-t border-white/20 bg-maroon px-5 pb-5 shadow-xl"
+          >
+            {[
+              ...links.slice(0, 2),
+              ...services,
+              ...links.slice(2),
+              { label: 'Contact us', href: '/contact' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block border-b border-white/10 py-4 text-sm hover:bg-white/10"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </details>
       </nav>
-      {mobile && (
-        <nav
-          id="mobile-navigation"
-          aria-label="Mobile navigation"
-          className="max-h-[calc(100dvh-6rem)] overflow-y-auto border-t border-white/20 px-5 pb-5 lg:hidden"
-        >
-          {[
-            ...links.slice(0, 2),
-            ...services,
-            ...links.slice(2),
-            { label: 'Contact us', href: '/contact' },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobile(false)}
-              aria-current={active(link.href)}
-              className="block border-b border-white/10 py-3 text-sm aria-[current=page]:font-bold"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      )}
     </header>
   );
 }
