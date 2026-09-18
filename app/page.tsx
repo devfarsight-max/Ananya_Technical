@@ -15,9 +15,24 @@ const links = [
   '/services/legal',
 ];
 const team = [
-  ['Mr. D. Chakravertee', 'Director - Operations'],
-  ['Ms. Ananya Chakravertee', 'Executive Director'],
-  ['Mrs. Nidhi Chakravertee', 'Director - Education Team'],
+  {
+    name: 'Mr. D. Chakravertee',
+    role: 'Director - Operations',
+    image: '/gallery/Screenshot 2026-09-18 122620.png',
+    alt: 'Mr. D. Chakravertee, Director of Operations',
+  },
+  {
+    name: 'Ms. Ananya Chakravertee',
+    role: 'Executive Director',
+    image: '/gallery/Screenshot 2026-09-18 122630.png',
+    alt: 'Ms. Ananya Chakravertee, Executive Director',
+  },
+  {
+    name: 'Mrs. Nidhi Chakravertee',
+    role: 'Director - Education Team',
+    image: '/gallery/Screenshot 2026-09-18 122641.png',
+    alt: 'Mrs. Nidhi Chakravertee, Director of the Education Team',
+  },
 ];
 
 export default function Home() {
@@ -383,16 +398,24 @@ export default function Home() {
             </p>
           </motion.div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {team.map(([name, role], index) => (
+            {team.map((member, index) => (
               <motion.article
-                key={name}
+                key={member.name}
                 className="detail-card"
                 variants={reveal}
                 custom={index}
                 whileHover={shouldReduceMotion ? undefined : { y: -4 }}
               >
-                <h3 className="text-xl font-bold">{name}</h3>
-                <p className="mt-3 text-[#681321]/75">{role}</p>
+                <Image
+                  src={member.image}
+                  alt={member.alt}
+                  width={768}
+                  height={1024}
+                  sizes="(min-width: 768px) 30vw, 100vw"
+                  className="aspect-3/4 w-full rounded-lg object-cover"
+                />
+                <h3 className="mt-5 text-xl font-bold">{member.name}</h3>
+                <p className="mt-3 text-[#681321]/75">{member.role}</p>
               </motion.article>
             ))}
           </div>
