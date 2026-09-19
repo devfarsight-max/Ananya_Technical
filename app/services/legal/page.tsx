@@ -8,12 +8,6 @@ const instagramUrl = 'https://www.instagram.com/nyaya.simplified_byats/';
 
 const legalPhotos = [
   {
-    src: '/gallery/WhatsApp Image 2026-09-18 at 10.55.33 AM.jpeg',
-    alt: 'Law student and mentor at an inter-college debate competition',
-    width: 1280,
-    height: 960,
-  },
-  {
     src: '/gallery/WhatsApp Image 2026-09-18 at 10.55.34 AM (1).jpeg',
     alt: 'Law student standing beside a Vidhi Vimash debate competition banner',
     width: 960,
