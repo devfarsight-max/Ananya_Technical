@@ -4,7 +4,7 @@ import { PageShell } from '@/components/page-shell';
 
 const youtubeUrl =
   'https://youtube.com/@nyaya.simplified_byats?si=4-gADF8BkUpm1NOg';
-const instagramUrl = 'https://www.instagram.com/nyaya.simplified_byats/';
+const instagramUrl = 'https://www.instagram.com/nayaya_simplified_byats/';
 
 const legalPhotos = [
   {
@@ -192,7 +192,7 @@ export default function LegalStudies() {
             className="detail-card transition-shadow hover:shadow-lg"
           >
             <p className="eyebrow">LEGAL INSTAGRAM</p>
-            <h2 className="mt-4 text-3xl font-black">@nyaya.simplified_byats</h2>
+            <h2 className="mt-4 text-3xl font-black">@nayaya_simplified_byats</h2>
             <p className="mt-4 leading-7 text-maroon/75">
               Follow the legal learning page for updates and new content.
             </p>

@@ -65,7 +65,7 @@ export default function PerformingArts() {
 							<h3 className="mt-4 text-2xl font-black">Ghungroo Tales by Ananya</h3>
 							<p className="mt-3 leading-7 text-maroon/75">Watch performing arts classes, dance practice, and creative learning.</p>
 						</a>
-						<a href="https://www.instagram.com/ghungrootales.by_ananya/" target="_blank" rel="noopener noreferrer" className="detail-card transition-shadow hover:shadow-lg">
+						<a href="https://www.instagram.com/ghunghrootales.by_ananya/" target="_blank" rel="noopener noreferrer" className="detail-card transition-shadow hover:shadow-lg">
 							<p className="eyebrow">PERFORMING ARTS INSTAGRAM</p>
 							<h3 className="mt-4 text-2xl font-black">@ghungrootales.by_ananya</h3>
 							<p className="mt-3 leading-7 text-maroon/75">Follow the performing arts page for updates and new content.</p>

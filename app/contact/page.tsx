@@ -87,15 +87,15 @@ export default function Contact() {
           {[
             {
               title: 'Performing Arts Instagram',
-              handle: '@ghungrootales.by_ananya',
+              handle: '@ghunghrootales.by_ananya',
               image: '/gallery/instagram-performing-arts.png',
-              href: 'https://www.instagram.com/ghungrootales.by_ananya/',
+              href: 'https://www.instagram.com/ghunghrootales.by_ananya/',
             },
             {
               title: 'Legal Instagram',
-              handle: '@nyaya.simplified_byats',
+              handle: '@nayaya_simplified_byats',
               image: '/gallery/instagram-legal.png',
-              href: 'https://www.instagram.com/nyaya.simplified_byats/',
+              href: 'https://www.instagram.com/nayaya_simplified_byats/',
             },
           ].map((channel) => (
             <article key={channel.handle} className="detail-card">

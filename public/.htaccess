@@ -1,0 +1,9 @@
+Options -MultiViews
+RewriteEngine On
+
+# Serve exported HTML pages at their clean URL paths, including nested pages
+# such as /services/education.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]

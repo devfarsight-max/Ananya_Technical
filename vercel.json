@@ -3,5 +3,17 @@
   "framework": null,
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist/client",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/achievements", "destination": "/achievements.html" },
+    { "source": "/approach", "destination": "/approach.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/team", "destination": "/team.html" },
+    { "source": "/vision-mission", "destination": "/vision-mission.html" },
+    { "source": "/services/education", "destination": "/services/education.html" },
+    { "source": "/services/legal", "destination": "/services/legal.html" },
+    { "source": "/services/performing-arts", "destination": "/services/performing-arts.html" },
+    { "source": "/services/technical", "destination": "/services/technical.html" }
+  ]
 }
