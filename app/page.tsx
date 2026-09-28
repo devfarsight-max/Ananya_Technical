@@ -17,9 +17,9 @@ const links = [
 const team = [
   {
     name: 'Mr. D. Chakravertee',
-    role: 'Director - Operations',
+    role: 'Founder / Director - Operations',
     image: '/gallery/Screenshot 2026-09-18 122620.png',
-    alt: 'Mr. D. Chakravertee, Director of Operations',
+    alt: 'Mr. D. Chakravertee, Founder and Director - Operations',
   },
   {
     name: 'Ms. Ananya Chakravertee',
@@ -29,9 +29,9 @@ const team = [
   },
   {
     name: 'Mrs. Nidhi Chakravertee',
-    role: 'Director - Education Team',
+    role: 'Co-Founder / Director Education Team',
     image: '/gallery/Screenshot 2026-09-18 122641.png',
-    alt: 'Mrs. Nidhi Chakravertee, Director of the Education Team',
+    alt: 'Mrs. Nidhi Chakravertee, Co-Founder and Director Education Team',
   },
 ];
 
