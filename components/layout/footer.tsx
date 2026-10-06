@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
         <div>
           <Link href="/" aria-label="Ananya Technical Services home" className="mb-5 inline-block">
-            <Image src="/ats-logo.jpeg" alt="ATS - Ananya Technical Services Private Limited" width={1254} height={1254} className="h-32 w-32 rounded-full object-contain" />
+            <Image src="/ats-logo-registered.png" alt="ATS - Ananya Technical Services Private Limited" width={1254} height={1254} className="h-32 w-32 rounded-full object-contain" />
           </Link>
           <p className="font-bold tracking-[.12em] text-[#FAF7EF]">ANANYA TECHNICAL SERVICES</p>
           <p className="mt-2 text-xs">PRIVATE LIMITED</p>

@@ -26,7 +26,7 @@ export function Header() {
           className="flex shrink-0 items-center gap-3"
         >
           <Image
-            src="/ats-logo.jpeg"
+            src="/ats-logo-registered.png"
             alt="ATS logo"
             width={1254}
             height={1254}
